@@ -224,3 +224,40 @@ if (typeof ScrollReveal !== "undefined") {
         }
     );
 }
+
+// KODE JAVASCRIPT LAMA KAMU
+// Menu, search, theme, cursor, ScrollReveal, dll.
+
+// =================================
+// FITUR KIRIM PESAN WHATSAPP
+// =================================
+
+const contactForm = document.querySelector(".contact-form");
+
+contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nama = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const telepon = document.getElementById("phone").value;
+    const subjek = document.getElementById("subject").value;
+    const pesan = document.getElementById("message").value;
+
+    const nomorWA = "6285151984405";
+
+    const isiPesan = `
+Halo, saya ingin menghubungi Anda.
+
+Nama: ${nama}
+Email: ${email}
+Telepon: ${telepon}
+Subjek: ${subjek}
+
+Pesan:
+${pesan}
+    `;
+
+    const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(isiPesan)}`;
+
+    window.open(url, "_blank");
+});
