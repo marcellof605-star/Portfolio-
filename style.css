@@ -1528,3 +1528,84 @@ h2 span {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== SERTIFIKAT ===== */
+/* Bagian sertifikat — memakai variabel warna dari style.css, jadi ikut tema gelap/terang */
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.certificate-card {
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 1.5rem;
+    transition: .3s;
+}
+
+.certificate-card:hover {
+    background: var(--card-hover);
+    border-color: rgba(56, 189, 248, .5);
+    transform: translateY(-.7rem);
+}
+
+.certificate-trigger {
+    display: block;
+    width: 100%;
+    padding: 0;
+    color: inherit;
+    text-align: left;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.certificate-trigger img {
+    aspect-ratio: 4 / 3;
+    background: var(--background-light);
+    transition: .5s;
+}
+
+.certificate-trigger:hover img {
+    transform: scale(1.05);
+}
+
+.certificate-info {
+    position: relative;
+    padding: 2rem 2.4rem 2.6rem;
+    background: var(--surface);
+}
+
+.certificate-info span {
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.certificate-info h3 {
+    margin: .6rem 0;
+    font-size: 2rem;
+}
+
+.certificate-info p {
+    color: var(--muted);
+    font-size: 1.4rem;
+}
+
+.certificate-modal-image {
+    height: auto;
+    max-height: 55vh;
+    margin-bottom: 2rem;
+    object-fit: contain;
+    background: var(--background-light);
+    border-radius: 1rem;
+}
+
+@media (max-width: 600px) {
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+}
