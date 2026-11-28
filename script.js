@@ -22,6 +22,7 @@ const sectionLabels = {
     education: "Pendidikan",
     services: "Keahlian",
     portfolio: "Proyek",
+    certificates: "Sertifikat",
     "contact-information": "Contact Information",
     contact: "Kontak"
 };
@@ -217,7 +218,7 @@ if (typeof ScrollReveal !== "undefined") {
     });
 
     ScrollReveal().reveal(
-        ".stats, .about-content, .about-image, .section-heading, .service-card, .project-card, .contact-form",
+        ".stats, .about-content, .about-image, .section-heading, .service-card, .project-card, .certificate-card, .contact-form",
         {
             origin: "bottom",
             interval: 100
@@ -261,3 +262,44 @@ ${pesan}
 
     window.open(url, "_blank");
 });
+
+// =================================
+// FITUR SERTIFIKAT
+// =================================
+
+const certificateModal = document.querySelector("#certificate-modal");
+const certificateImage = document.querySelector("#certificate-modal-image");
+const certificateTitle = document.querySelector("#certificate-modal-title");
+const certificateMeta = document.querySelector("#certificate-modal-meta");
+const certificateClose = document.querySelector("#certificate-modal-close");
+
+const closeCertificateModal = () => {
+    if (!certificateModal) return;
+    certificateModal.classList.remove("show");
+    certificateModal.setAttribute("aria-hidden", "true");
+};
+
+if (certificateModal) {
+    document.querySelectorAll(".certificate-trigger").forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+            const { img, title, issuer, year } = trigger.dataset;
+
+            certificateImage.src = img;
+            certificateImage.alt = `Sertifikat ${title}`;
+            certificateTitle.textContent = title;
+            certificateMeta.textContent = `${issuer} · ${year}`;
+
+            certificateModal.classList.add("show");
+            certificateModal.setAttribute("aria-hidden", "false");
+            certificateClose.focus();
+        });
+    });
+
+    certificateClose.addEventListener("click", closeCertificateModal);
+    certificateModal.addEventListener("click", (event) => {
+        if (event.target === certificateModal) closeCertificateModal();
+    });
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeCertificateModal();
+    });
+}
